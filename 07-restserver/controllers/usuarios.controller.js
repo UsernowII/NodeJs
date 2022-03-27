@@ -1,18 +1,31 @@
-const {response} = require('express');
+const {response, request} = require('express');
 
 
-const usuariosGet = (req, res = response) => {
+
+
+const usuariosGet = (req = request, res = response) => {
     
+    //  extraer parametros opcionales de la query "?"
+    const {nombre, apikey} = req.query;  
+
+
     res.json({
       msg: "get API - controllador",
+      nombre,
+      apikey
     }); 
     
 }
 
 
 const usuariosPut = (req, res) => {
+
+    const id = req.params.id;
+
+
     res.status(400).json({
       msg: "put API - controller",
+      id
     });
 
 }
